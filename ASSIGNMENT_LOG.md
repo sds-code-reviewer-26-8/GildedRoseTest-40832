@@ -129,7 +129,7 @@
 **메모:**
 - 총 26개 테스트 (스펙 22개 + #17 분리 1개 + 보강 3개). 모두 `GildedRoseTest.java`에 작성
 - `@ExtendWith(MockitoExtension.class)` + `@Mock ItemRepository` 사용, `InMemoryItemRepository`는 사용하지 않음
-- 중복을 줄이기 위해 헬퍼 `updateOneDay(name, sellIn, quality)`(Given stub + When 실행)와 `assertItem`(sellIn/quality 동시 검증) 사용
+- 모든 테스트 본문에 `// Given` / `// When` / `// Then` 주석으로 AAA 구조를 명시 (26개 전부). 처음에는 헬퍼가 Given+When을 숨기고 있었으나 구조가 드러나지 않아 헬퍼를 제거하고 재작성
 - `@DisplayName`에 스펙 번호(#N)와 설명, 메서드 이름에도 스펙이 드러나도록 작성
 - `src/main` 수정 없음
 
@@ -144,7 +144,7 @@
 **결과:** (JaCoCo 기준, IntelliJ 수치는 5단계에서 캡처)
 - `./gradlew clean test`: 26개 중 26개 통과, 실패 0
 - `GildedRose` Line Coverage 100% (35/35), Branch Coverage 100% (36/36) → 기준(90%/80%) 충족
-- 실행 시간 약 1.8초 (`GildedRoseTest` 전체, Mock 교체 전 기준선 4.08초) → 기준 3초 이내 충족
+- 실행 시간 약 1.7초 (`GildedRoseTest` 전체, Mock 교체 전 기준선 4.08초) → 기준 3초 이내 충족
 - 미커버 분기 없음, 추가 보강 불필요
 
 ## 5. 제출 자료 준비 ⬜
